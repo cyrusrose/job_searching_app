@@ -1,15 +1,10 @@
-# Expo Router Example
+# Job Searching App
 
-Use [`expo-router`](https://expo.github.io/router) to build native navigation using files in the `app/` directory.
+This is a project that helps find a job of your dream. This project uses JSearch API provided by Rapid API.
 
-## 🚀 How to use
+In this branch you'll find:
 
-```sh
-npx create-react-native-app -t with-router
-```
-
-## 📝 Notes
-
-- [Expo Router: Docs](https://expo.github.io/router)
-- [Expo Router: Repo](https://github.com/expo/router)
-- [Request for Comments](https://github.com/expo/router/discussions/1)
+-   **Typescript** language.
+-   **Expo Router** framework built on top of **React Native**.
+-   **Prettier** plugin for one code theme.
+-   **Axios** for requset processing.
