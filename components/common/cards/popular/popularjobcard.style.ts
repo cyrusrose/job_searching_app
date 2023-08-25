@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet, ViewStyle } from "react-native"
 
 import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants"
 import { JobItem } from "@resp"
@@ -31,7 +31,7 @@ const styles = {
             color: "#B3AEC6"
         }
     }),
-    container: (selectedJob: string, item: JobItem) => ({
+    container: (selectedJob: string, item: JobItem): ViewStyle => ({
         width: 250,
         padding: SIZES.xLarge,
         backgroundColor: selectedJob === item.job_id ? COLORS.primary : "#FFF",
@@ -40,7 +40,7 @@ const styles = {
         ...SHADOWS.medium,
         shadowColor: COLORS.white
     }),
-    logoContainer: (selectedJob: string, item: JobItem) => ({
+    logoContainer: (selectedJob: string, item: JobItem): ViewStyle => ({
         width: 50,
         height: 50,
         backgroundColor: selectedJob === item.job_id ? "#FFF" : COLORS.white,

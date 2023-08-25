@@ -11,6 +11,11 @@ import styles from "./popularjobs.style"
 import { COLORS, SIZES } from "../../../constants"
 import PopularJobCard from "../../common/cards/popular/PopularJobCard"
 import useFetch from "../../../hook/useFetch"
+import { JobItem } from "@resp"
+
+const handleJobCardPress = (item: JobItem) => {
+    console.log(`handleJobCardPress ${item.job_title}`)
+}
 
 const Popularjobs = () => {
     const router = useRouter()
@@ -25,7 +30,7 @@ const Popularjobs = () => {
     }, [error])
 
     useEffect(() => {
-        if (data.length != 0) console.log("Data " + data[0]?.["job_title"])
+        if (data.length != 0) console.log("Data loaded")
     }, [data])
 
     return (
@@ -39,9 +44,13 @@ const Popularjobs = () => {
                     <Text>Something went wrong</Text>
                 ) : (
                     <FlatList
-                        data={[{ job_id: "1" }, { job_id: "2" }]}
+                        data={data}
                         renderItem={({ item }) => (
-                            <PopularJobCard item={item} />
+                            <PopularJobCard
+                                item={item}
+                                selectedJob="TODO"
+                                handlePress={handleJobCardPress}
+                            />
                         )}
                         keyExtractor={(item) => item.job_id}
                         contentContainerStyle={{ columnGap: SIZES.medium }}

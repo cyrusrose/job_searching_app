@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import axios, { AxiosRequestConfig } from "axios"
 import { RAPID_API_KEY } from "@my"
-import { JobQuery } from "@resp"
+import { JobItem, JobQuery } from "@resp"
+import FAKE_DATA from "./testData"
 
 const useFetch = (endpoint: string, query: JobQuery) => {
-    const [data, setData] = useState<any[]>([])
+    const [data, setData] = useState<JobItem[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<any>(null)
     const cancelToken = axios.CancelToken.source()
@@ -26,7 +27,7 @@ const useFetch = (endpoint: string, query: JobQuery) => {
         try {
             // const responce = await axios.request(options)
             // setData(responce.data.data)
-            setData([{ job_title: "Hi2" }])
+            setData(FAKE_DATA.data)
         } catch (error) {
             setError(error)
 
