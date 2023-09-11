@@ -749,7 +749,7 @@ export default {
             employer_company_type: "Information",
             job_publisher: "ATT Jobs",
             job_id: "1lr1uWOWY3MAAAAAAAAAAA==",
-            job_employment_type: "FULLTIME",
+            job_employment_type: "PARTTIME",
             job_title: "Front End Developer",
             job_apply_link:
                 "https://www.att.jobs/job/dallas/front-end-developer/117/49435018000",

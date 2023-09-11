@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react"
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    FlatList,
-    ActivityIndicator
-} from "react-native"
+import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native"
 import { useRouter } from "expo-router"
-import styles from "./popularjobs.style"
+import styles from "./nearbyjobs.style"
 import { COLORS, SIZES } from "../../../constants"
 import PopularJobCard from "../../common/cards/popular/PopularJobCard"
 import useFetch from "../../../hook/useFetch"
 import { JobItem } from "@resp"
+import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard"
 
-const Popularjobs = () => {
+const Nearbyjobs = () => {
     const router = useRouter()
     const { data, error, isLoading } = useFetch("search", {
         query: "React developer",
@@ -24,16 +19,17 @@ const Popularjobs = () => {
     const [selectedJob, setSelectedJob] = useState<string>("")
 
     const handleJobCardPress = (item: JobItem) => {
-        console.log(`handleJobCardPress ${item.job_title}`)
+        console.log(`handleJobCardPress for Nearbyjobs ${item.job_title}`)
         setSelectedJob(item.job_id)
+        router.push(`/job-details/${item.job_id}`)
     }
 
     useEffect(() => {
-        if (error != null) console.log(`Error: ${error}`)
+        if (error != null) console.log(`Error for Nearbyjobs: ${error}`)
     }, [error])
 
     useEffect(() => {
-        if (data.length != 0) console.log("Data loaded")
+        if (data.length != 0) console.log("Data loaded for Nearbyjobs")
     }, [data])
 
     return (
@@ -46,30 +42,24 @@ const Popularjobs = () => {
                 ) : error ? (
                     <Text>Something went wrong</Text>
                 ) : (
-                    <FlatList
-                        data={data}
-                        renderItem={({ item }) => (
-                            <PopularJobCard
-                                item={item}
-                                selectedJob={selectedJob}
-                                handlePress={handleJobCardPress}
-                            />
-                        )}
-                        keyExtractor={(item) => item.job_id}
-                        contentContainerStyle={{ columnGap: SIZES.medium }}
-                        horizontal
-                    />
+                    data?.map((item) => (
+                        <NearbyJobCard
+                            item={item}
+                            key={`nearby-job-${item.job_id}`}
+                            handlePress={handleJobCardPress}
+                        />
+                    ))
                 )}
             </View>
         </View>
     )
 }
 
-export default Popularjobs
+export default Nearbyjobs
 
 const Header = () => (
     <View style={styles.header}>
-        <Text style={styles.headerTitle}>Popular Jobs</Text>
+        <Text style={styles.headerTitle}>Nearby Jobs</Text>
         <TouchableOpacity>
             <Text style={styles.headerBtn}>Show all</Text>
         </TouchableOpacity>
