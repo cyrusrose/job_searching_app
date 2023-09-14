@@ -27,9 +27,9 @@ const useFetch = (endpoint: string, query: JobQuery) => {
         setIsLoading(true)
 
         try {
-            // const responce = await axios.request(options)
-            // setData(responce.data.data)
-            setData(FAKE_DATA.data)
+            const responce = await axios.request(options)
+            setData(responce.data.data)
+            // setData(FAKE_DATA.data)
         } catch (error) {
             setError(error)
 

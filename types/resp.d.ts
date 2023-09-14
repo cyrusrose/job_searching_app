@@ -6,7 +6,7 @@ declare module "@resp" {
         employer_name: string
         job_country: string
         job_employment_type: string
-        [x: string | number]: unknown
+        [x: string | number]: any
     }
 
     export type JobQuery = {

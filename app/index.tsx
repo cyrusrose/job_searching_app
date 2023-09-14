@@ -11,6 +11,7 @@ import {
 
 const Home = () => {
     const router = useRouter()
+    const [searchItem, setSearchItem] = useState("")
 
     return (
         <SafeAreaView
@@ -41,7 +42,15 @@ const Home = () => {
                         flex: 1,
                         padding: SIZES.medium
                     }}>
-                    <Welcome />
+                    <Welcome
+                        searchTerm={searchItem}
+                        setSearchTerm={setSearchItem}
+                        handleClick={() => {
+                            if (searchItem) {
+                                router.push(`/search/${searchItem}`)
+                            }
+                        }}
+                    />
 
                     <Popularjobs />
                     <Nearbyjobs />

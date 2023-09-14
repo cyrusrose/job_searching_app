@@ -26,13 +26,13 @@ const JobDetails = () => {
     const { id } = useLocalSearchParams()
     const router = useRouter()
 
-    const { /* data,*/ error, isLoading } = useFetch("job-details", {
+    const { data, error, isLoading } = useFetch("job-details", {
         job_id: id,
         num_pages: 1,
         page: 1
     })
 
-    const data = testData.data
+    // const data = testData.data
 
     const [refreshing, setRefreshing] = useState(false)
     const [activeTab, setActiveTab] = useState(tabs[0])

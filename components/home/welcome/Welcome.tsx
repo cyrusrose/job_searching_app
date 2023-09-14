@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from "react"
+import {
+    Dispatch,
+    DispatchWithoutAction,
+    useCallback,
+    useEffect,
+    useLayoutEffect,
+    useState
+} from "react"
 import {
     View,
     Text,
@@ -14,17 +21,27 @@ import { icons, SIZES } from "../../../constants"
 
 const jobTypes = ["Full-time", "Part-time", "Contractor"]
 
-const Welcome = () => {
+type WelcomeProps = {
+    searchTerm: string
+    setSearchTerm: Dispatch<string>
+    handleClick: DispatchWithoutAction
+}
+
+const Welcome = ({ searchTerm, setSearchTerm, handleClick }: WelcomeProps) => {
     const [activeJobType, setActiveJobType] = useState(jobTypes[0])
     const router = useRouter()
 
     return (
         <View>
             <Header />
-            <Search />
+            <Search
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                handleClick={handleClick}
+            />
 
             <View style={styles.style.tabsContainer}>
-                <FlatList
+                <FlatList<string>
                     data={jobTypes}
                     renderItem={({ item }) => (
                         <JobItem
@@ -47,7 +64,7 @@ const Welcome = () => {
     )
 }
 
-const Search = () => {
+const Search = ({ searchTerm, setSearchTerm, handleClick }: WelcomeProps) => {
     const { style } = styles
 
     return (
@@ -55,13 +72,13 @@ const Search = () => {
             <View style={style.searchWrapper}>
                 <TextInput
                     style={style.searchInput}
-                    value=""
-                    onChange={() => {}}
+                    value={searchTerm}
+                    onChangeText={(text) => setSearchTerm(text)}
                     placeholder="What are you looking for?"
                 />
             </View>
 
-            <TouchableOpacity style={style.searchBtn} onPress={() => {}}>
+            <TouchableOpacity style={style.searchBtn} onPress={handleClick}>
                 <Image
                     source={icons.search}
                     style={style.searchBtnImage as ImageStyle}

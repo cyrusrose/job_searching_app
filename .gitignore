@@ -12,5 +12,9 @@ web-build/
 .vscode/
 .env
 
+# test data
+app\job-details\testData.ts
+hook\testData.ts
+
 # macOS
 .DS_Store

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Dispatch } from "react"
 import { View, Text, TouchableOpacity } from "react-native"
 
 import styles from "./tabs.style"
@@ -8,7 +8,7 @@ import { SIZES } from "../../../constants"
 type TabsProps = {
     tabs: string[]
     activeTab: string
-    setActiveApp: (name: string) => void
+    setActiveApp: Dispatch<string>
 }
 
 const Tabs = ({ tabs, activeTab, setActiveApp }: TabsProps) => {
