@@ -4,7 +4,7 @@
   <img src="./images/main.jpg"/>
 </p>
 
-This is a project that helps find a job of your dream. This project uses JSearch API provided by Rapid API.
+This is a project that helps find a job of your dream. This project uses JSearch API provided by Rapid API. This project is based on the JS Mastery tutorial of building job searching app, which was written in javascript. 
 
 In this branch you'll find:
 
